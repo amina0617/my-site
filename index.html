@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Мой первый сайт</title>
+    <style> body {
+            background-color: #8eaeee;
+        }
+        h1 {
+            color: rgb(253, 253, 253);
+            text-align: center;
+        }</style>
+</head>
+<body>
+
+    <h1>Меня зовут Хадиджа!</h1>
+    <p>Я хочу научиться создавать сайты.</p>
+    <p>Это мой первый урок.</p>
+    <img src="котик мур.jpg" alt="Мой любимый котик" width="300"onclick="sayHello()">
+    <p><span id="counter">0</span> раз</p>
+    <button onclick="petCat()">Погладить котика 👋</button>
+    <br>
+    <a href="http://www.youtube.com/@Heddi_cake">Перейти на мой ютуб канал</a>
+
+    <hr>
+    <p>Как вас зовут?</p>
+    <input type="text" id="userName" placeholder="Введите имя...">
+    <button onclick="greetUser()">Познакомиться 👋</button>
+    <h2 id="greeting"></h2>
+ <script>
+    let count = 0;
+        function sayHello() {
+            alert("Мяу! Привет от котика! Вы кликнули на меня! 🐾");
+        }
+        function petCat() {
+            count = count + 1;document.getElementById("counter").innerText = count;}
+                    function greetUser() {
+            // 1. Находим поле ввода по его id и забираем то, что человек туда написал (value)
+            let name = document.getElementById("userName").value;
+            
+            // 2. Если человек ничего не ввел, дадим ему имя "Гость"
+            if (name === "") {
+                name = "Незнакомец";
+            }
+            
+            // 3. Находим наш пустой заголовок h2 и вставляем туда красивый текст
+            document.getElementById("greeting").innerText = "Привет, " + name + "! Добро пожаловать на мой сайт! ✨";
+        }
+
+    </script>
+</body>
+</html>

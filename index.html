@@ -11,6 +11,8 @@
         }</style>
 </head>
 <body>
+    console.log("приветик");
+
 
     <h1>Меня зовут Хадиджа!</h1>
     <p>Я хочу научиться создавать сайты.</p>
@@ -26,26 +28,36 @@
     <input type="text" id="userName" placeholder="Введите имя...">
     <button onclick="greetUser()">Познакомиться 👋</button>
     <h2 id="greeting"></h2>
- <script>
-    let count = 0;
+     <script>
+        let count = Number(localStorage.getItem("catClicks")) || 0;
+
+        document.getElementById("counter").innerText = count;
+
+        let savedName = localStorage.getItem("userNameSaved");
+        if (savedName) {
+            document.getElementById("greeting").innerText = "Привет, " + savedName + "! С возвращением на сайт! ✨";
+        }
+
         function sayHello() {
             alert("Мяу! Привет от котика! Вы кликнули на меня! 🐾");
         }
+
         function petCat() {
-            count = count + 1;document.getElementById("counter").innerText = count;}
-                    function greetUser() {
-            // 1. Находим поле ввода по его id и забираем то, что человек туда написал (value)
+            count = count + 1; 
+            document.getElementById("counter").innerText = count;
+            
+            localStorage.setItem("catClicks", count);
+        }
+        function greetUser() {
             let name = document.getElementById("userName").value;
             
-            // 2. Если человек ничего не ввел, дадим ему имя "Гость"
             if (name === "") {
                 name = "Незнакомец";
             }
             
-            // 3. Находим наш пустой заголовок h2 и вставляем туда красивый текст
             document.getElementById("greeting").innerText = "Привет, " + name + "! Добро пожаловать на мой сайт! ✨";
+            localStorage.setItem("userNameSaved", name);
         }
-
     </script>
 </body>
 </html>

@@ -13,7 +13,7 @@
 <body>
 
     <h1>Меня зовут Хадиджа!</h1>
-    <p>Я хочу научиться создавать сайты./p>
+    <p>Я хочу научиться создавать сайты.</p>
     <p>Это мой первый урок.</p>
     <img src="котик мур.jpg" alt="Мой любимый котик" width="300"onclick="sayHello()">
     <p><span id="counter">0</span> раз</p>
@@ -31,29 +31,33 @@
     <button onclick="greetUser()">Познакомиться 👋</button>
     <h2 id="greeting"></h2>
      <script>
+        // 1. Память счетчика
         let count = Number(localStorage.getItem("catClicks")) || 0;
-
         document.getElementById("counter").innerText = count;
 
+        // 2. Память имени
         let savedName = localStorage.getItem("userNameSaved");
         if (savedName) {
             document.getElementById("greeting").innerText = "Привет, " + savedName + "! С возвращением на сайт! ✨";
         }
 
+        // Клик по котику
         function sayHello() {
             alert("Мяу! Привет от котика! Вы кликнули на меня! 🐾");
         }
 
+        // Функция поглаживания котика
         function petCat() {
             count = count + 1; 
             document.getElementById("counter").innerText = count;
-            
             localStorage.setItem("catClicks", count);
 
-        if (count >= 10) {
-    document.getElementById("achievement").innerText = "🏆 Достижение: Лучший Друг Котика!";
-}
+            if (count >= 10) {
+                document.getElementById("achievement").innerText = "🏆 Достижение: Лучший Друг Котика!";
+            }
+        } // <-- ВОТ ЭТУ СКОБКУ вы случайно пропустили! Теперь функция закрыта.
 
+        // Функция знакомства
         function greetUser() {
             let name = document.getElementById("userName").value;
             
@@ -64,11 +68,12 @@
             document.getElementById("greeting").innerText = "Привет, " + name + "! Добро пожаловать на мой сайт! ✨";
             localStorage.setItem("userNameSaved", name);
         }
-        function resetGame() {
-    localStorage.clear(); 
-    location.reload();  
-}
 
+        // Функция сброса
+        function resetGame() {
+            localStorage.clear(); 
+            location.reload();  
+        }
     </script>
 </body>
 </html>

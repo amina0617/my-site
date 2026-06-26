@@ -11,21 +11,23 @@
         }</style>
 </head>
 <body>
-    console.log("приветик");
-
 
     <h1>Меня зовут Хадиджа!</h1>
-    <p>Я хочу научиться создавать сайты.</p>
+    <p>Я хочу научиться создавать сайты./p>
     <p>Это мой первый урок.</p>
     <img src="котик мур.jpg" alt="Мой любимый котик" width="300"onclick="sayHello()">
     <p><span id="counter">0</span> раз</p>
     <button onclick="petCat()">Погладить котика 👋</button>
+    <p id="achievement" style="color: gold; font-weight: bold; font-size: 20px;"></p>
     <br>
     <a href="http://www.youtube.com/@Heddi_cake">Перейти на мой ютуб канал</a>
 
     <hr>
     <p>Как вас зовут?</p>
     <input type="text" id="userName" placeholder="Введите имя...">
+    <br><br>
+<button onclick="resetGame()" style="background-color: lightcoral;">Сбросить всё 🔄</button>
+
     <button onclick="greetUser()">Познакомиться 👋</button>
     <h2 id="greeting"></h2>
      <script>
@@ -47,8 +49,11 @@
             document.getElementById("counter").innerText = count;
             
             localStorage.setItem("catClicks", count);
-        
-        if (count === 10) alert("Поздравляем! Вы получили достижение:Лучший Друг Котика!")}
+
+        if (count >= 10) {
+    document.getElementById("achievement").innerText = "🏆 Достижение: Лучший Друг Котика!";
+}
+
         function greetUser() {
             let name = document.getElementById("userName").value;
             
@@ -59,6 +64,11 @@
             document.getElementById("greeting").innerText = "Привет, " + name + "! Добро пожаловать на мой сайт! ✨";
             localStorage.setItem("userNameSaved", name);
         }
+        function resetGame() {
+    localStorage.clear(); 
+    location.reload();  
+}
+
     </script>
 </body>
 </html>
